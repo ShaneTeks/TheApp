@@ -1,46 +1,110 @@
-# Getting Started with Create React App
+# Signage Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This application facilitates the management of clients, jobs, tasks, users, inventory, and machinery for a signage company, designed to run offline on a local network. It incorporates real-time chat functionality and user authentication.
 
-In the project directory, you can run:
+## Technology Stack
 
-### `npm start`
+- Frontend: React.js with TypeScript
+- Backend: Node.js with Express.js
+- Database: PostgreSQL
+- Authentication: JSON Web Tokens (JWT)
+- Real-time Communication: Socket.io
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Guide
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### User Authentication
 
-### `npm test`
+1. **Signup:** Navigate to the signup page, fill in your details, and submit the form to create an account.
+2. **Login:** Use your credentials to log in. Successful authentication grants access to the dashboard.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dashboard
 
-### `npm run build`
+- Provides an overview of clients, jobs, inventory, and machinery. Basic controls for navigation are included to access detailed management pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Client Management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Add, update, and remove clients. View detailed client information and manage associated jobs.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Job Management
 
-### `npm run eject`
+- Manage tasks, assign users, and track job completion.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Machinery Tracking
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Monitor machine status. Includes CNC Routers, CO2 Lasers, etc. Logs job history and material usage.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Inventory Management
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Track available materials and log changes in inventory levels for job allocation.
 
-## Learn More
+### Real-time Chat
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Engage in real-time communication with other logged-in users.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API Documentation
+
+- [GET] `/api/clients`: Fetch all clients
+- [POST] `/api/clients`: Create a new client
+- [PUT] `/api/clients/:id`: Update client details
+- [DELETE] `/api/clients/:id`: Remove a client
+
+- [GET] `/api/jobs`: Fetch all jobs or filter by status
+- [POST] `/api/jobs`: Create a new job entry
+- [PUT] `/api/jobs/:id`: Update job details
+- [DELETE] `/api/jobs/:id`: Delete a job record
+
+- [GET] `/api/machinery`: Fetch all machinery records
+- [POST] `/api/machinery`: Create machinery data entry
+- [PUT] `/api/machinery/:id`: Update machinery details
+- [DELETE] `/api/machinery/:id`: Remove a machinery record
+
+- [GET] `/api/inventory`: Fetch all inventory items
+- [POST] `/api/inventory`: Create new inventory item
+- [PUT] `/api/inventory/:id`: Update inventory item details
+- [DELETE] `/api/inventory/:id`: Remove an inventory item
+
+- [GET] `/api/users`: Fetch all users (admin only)
+- [POST] `/api/users`: Create a new user (signup)
+- [PUT] `/api/users/:id`: Update user details
+- [DELETE] `/api/users/:id`: Remove a user (admin only)
+
+## Deployment Guide
+
+### Prerequisites
+
+- Ensure Node.js, npm, and PostgreSQL are installed.
+- Confirm local network IP address (e.g., 192.168.0.1).
+
+### Setup Instructions
+
+1. **Clone the Repository:**
+   ```
+   git clone <repository-url>
+   cd signage-webapp
+   ```
+
+2. **Install Dependencies:**
+   ```
+   cd backend
+   npm install
+   cd ../frontend
+   npm install
+   ```
+
+3. **Database Initialization:**
+   Execute SQL schema found in `backend/schema.sql` to set up PostgreSQL.
+
+4. **Environment Configuration:**
+   Configure local IP in environment variables (if necessary)
+
+5. **Run the Application:**
+   - **Backend:** Navigate to `backend` and run `npm start`.
+   - **Frontend:** Navigate to `frontend` and run `npm start`.
+
+6. **Ensure Connectivity:**
+   Confirm devices on the local network can reach the application through the host machine's IP.
+
+7. **Technical Support:**
+   For installation assistance, provide a detailed setup log for troubleshooting.
